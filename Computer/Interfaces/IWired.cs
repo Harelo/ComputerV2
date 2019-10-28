@@ -9,7 +9,5 @@ namespace Computer.Interfaces
     {
         public Wire input { get; set; }
         public Wire output { get; set;  }
-
-        public Wire test { get; set; }
     }
 }

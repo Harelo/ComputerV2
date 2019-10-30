@@ -18,12 +18,19 @@ namespace Computer.LogicGates
             InputB = new Wire();
             Output = new Wire();
 
-            InputA.WireUpdateEvent += (n) =>
-            {
-                if (n || InputB.value)
-                    Output.value = true;
-                else Output.value = false;
-            };
+            InputA.WireUpdateEvent += CheckInputs;
+            InputB.WireUpdateEvent += CheckInputs;
+        }
+
+        /// <summary>
+        /// Check inputs when any input changes and update output accordingly
+        /// </summary>
+        /// <param name="n"></param>
+        private void CheckInputs(bool n)
+        {
+            if (InputA.value || InputB.value)
+                Output.value = true;
+            else Output.value = false;
         }
     }
 }

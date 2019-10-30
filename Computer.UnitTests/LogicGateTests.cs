@@ -138,5 +138,29 @@ namespace Computer.UnitTests
             norGate.InputB.value = false;
             Assert.IsTrue(norGate.Output.value);
         }
+
+        [TestMethod]
+        public void XNOR_InputChanged_OutputUpdatesCorrectly()
+        {
+            //When both inputs are off output should be on
+            XNOR xnorGate = new XNOR();
+            Assert.IsTrue(xnorGate.Output.value);
+
+            //When InputA only is on output should be off
+            xnorGate.InputA.value = true;
+            Assert.IsFalse(xnorGate.Output.value);
+
+            //When both inputs are on output should be on
+            xnorGate.InputB.value = true;
+            Assert.IsTrue(xnorGate.Output.value);
+
+            //When InputB only is on output should be off
+            xnorGate.InputA.value = false;
+            Assert.IsFalse(xnorGate.Output.value);
+
+            //When both inputs are off again output should be on
+            xnorGate.InputB.value = false;
+            Assert.IsTrue(xnorGate.Output.value);
+        }
     }
 }

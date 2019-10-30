@@ -27,10 +27,6 @@ namespace Computer.LogicGates
             InputB.WireUpdateEvent += CheckInputs;
         }
 
-        private void CheckInputs(bool n)
-        {
-            Console.WriteLine(InputA.value & InputB.value);
-            Output.value = !(InputA.value & InputB.value);
-        }
+        private void CheckInputs(bool n) => Output.value = !(InputA.value & InputB.value);
     }
 }

@@ -67,5 +67,29 @@ namespace Computer.UnitTests
             orGate.InputB.value = false;
             Assert.IsFalse(orGate.Output.value);
         }
+
+        [TestMethod]
+        public void XOR_InputChanged_OutputUpdatesCorrectly()
+        {
+            //When both inputs are off output should be off
+            XOR xorGate = new XOR();
+            Assert.IsFalse(xorGate.Output.value);
+
+            //When InputA only is on output should be on
+            xorGate.InputA.value = true;
+            Assert.IsTrue(xorGate.Output.value);
+
+            //When both inputs are on output should be off
+            xorGate.InputB.value = true;
+            Assert.IsFalse(xorGate.Output.value);
+
+            //When InputB only is on output should be on
+            xorGate.InputA.value = false;
+            Assert.IsTrue(xorGate.Output.value);
+
+            //When both inputs are off again output should be off
+            xorGate.InputB.value = false;
+            Assert.IsFalse(xorGate.Output.value);
+        }
     }
 }

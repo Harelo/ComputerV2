@@ -116,5 +116,28 @@ namespace Computer.UnitTests
             nandGate.InputB.value = false;
             Assert.IsTrue(nandGate.Output.value);
         }
+
+        [TestMethod]
+        public void NOR_InputChanged_OutputUpdatesCorrectly()
+        {
+            //When both inputs are off output should be on
+            NOR norGate = new NOR();
+            Assert.IsTrue(norGate.Output.value);
+
+            //Any other option - output is off
+
+            norGate.InputA.value = true;
+            Assert.IsFalse(norGate.Output.value);
+
+            norGate.InputB.value = true;
+            Assert.IsFalse(norGate.Output.value);
+
+            norGate.InputA.value = false;
+            Assert.IsFalse(norGate.Output.value);
+
+            //When both inputs are off again output should be on again
+            norGate.InputB.value = false;
+            Assert.IsTrue(norGate.Output.value);
+        }
     }
 }

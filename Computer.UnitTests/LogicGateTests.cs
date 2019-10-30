@@ -100,19 +100,19 @@ namespace Computer.UnitTests
             NAND nandGate = new NAND();
             Assert.IsTrue(nandGate.Output.value);
 
-            //When InputA only is on output should be off
+            //When InputA only is on output should be on
             nandGate.InputA.value = true;
-            Assert.IsFalse(nandGate.Output.value);
+            Assert.IsTrue(nandGate.Output.value);
 
             //When both inputs are on output should be off
             nandGate.InputB.value = true;
             Assert.IsFalse(nandGate.Output.value);
 
-            //When InputB only is on output should be off
+            //When InputB only is on output should be on
             nandGate.InputA.value = false;
-            Assert.IsFalse(nandGate.Output.value);
+            Assert.IsTrue(nandGate.Output.value);
 
-            //When both inputs are off again output should be back on
+            //When both inputs are off again output should be on
             nandGate.InputB.value = false;
             Assert.IsTrue(nandGate.Output.value);
         }

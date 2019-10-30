@@ -22,10 +22,15 @@ namespace Computer.LogicGates
             InputB = new Wire();
             Output = new Wire();
 
+            Output.value = true;
             InputA.WireUpdateEvent += CheckInputs;
             InputB.WireUpdateEvent += CheckInputs;
         }
 
-        private void CheckInputs(bool n) => Output.value = !(InputA.value & InputB.value);
+        private void CheckInputs(bool n)
+        {
+            Console.WriteLine(InputA.value & InputB.value);
+            Output.value = !(InputA.value & InputB.value);
+        }
     }
 }

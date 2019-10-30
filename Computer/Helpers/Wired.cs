@@ -12,6 +12,8 @@ namespace Computer.Helpers
         {
             input = new Wire();
             output = new Wire();
+            input.value = false;
+            output.value = false;
         }
     }
 }

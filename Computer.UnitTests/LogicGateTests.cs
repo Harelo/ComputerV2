@@ -6,7 +6,6 @@ namespace Computer.UnitTests
     [TestClass]
     public class LogicGateTests
     {
-        //Testing the NOT gate class
         [TestMethod]
         public void NOTClass_InputChange_OutputInverted()
         {

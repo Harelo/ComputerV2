@@ -43,5 +43,29 @@ namespace Computer.UnitTests
             andGate.InputB.value = false;
             Assert.IsFalse(andGate.Output.value);
         }
+
+        [TestMethod]
+        public void OR_InputChanged_OutputUpdatesCorrectly()
+        {
+            //When both inputs are off output should be off
+            OR orGate = new OR();
+            Assert.IsFalse(orGate.Output.value);
+
+            //When InputA only is on output should be on
+            orGate.InputA.value = true;
+            Assert.IsTrue(orGate.Output.value);
+
+            //When both inputs are on output should be on
+            orGate.InputB.value = true;
+            Assert.IsTrue(orGate.Output.value);
+
+            //When InputB only is on output should be on
+            orGate.InputA.value = false;
+            Assert.IsTrue(orGate.Output.value);
+
+            //When both inputs are off again output should be off
+            orGate.InputB.value = false;
+            Assert.IsFalse(orGate.Output.value);
+        }
     }
 }

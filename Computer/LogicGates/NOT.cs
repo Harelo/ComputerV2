@@ -5,15 +5,15 @@ namespace Computer.LogicGates
 {
     public class NOT : IWired
     {
-        public Wire Input { get; set; }
+        public Wire InputA { get; set; }
         public Wire Output { get; set; }
 
         public NOT()
         {
             Output = new Wire();
-            Input = new Wire();
+            InputA = new Wire();
             Output.value = true;
-            Input.WireUpdateEvent += (n) => Output.value = !n;
+            InputA.WireUpdateEvent += (n) => Output.value = !n;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Computer.UnitTests
             NOT notGate = new NOT();
 
             // Act
-            notGate.Input.value = true;
+            notGate.InputA.value = true;
 
             // Assert
             Assert.IsFalse(notGate.Output.value);

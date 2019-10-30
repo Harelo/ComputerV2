@@ -28,11 +28,6 @@ namespace Computer.LogicGates
         /// Update output according to inputs
         /// </summary>
         /// <param name="n"></param>
-        private void CheckInputs(bool n)
-        {
-            if (InputB.value && InputA.value)
-                Output.value = true;
-            else Output.value = false;
-        }
+        private void CheckInputs(bool n) => Output.value = InputA.value & InputB.value;
     }
 }

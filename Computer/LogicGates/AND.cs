@@ -20,19 +20,19 @@ namespace Computer.LogicGates
 
             //Events for updating the output depending on the inputs
 
-            InputA.WireUpdateEvent += (n) =>
-            {
-                if (InputB.value && n)
-                    Output.value = true;
-                else Output.value = false;
-            };
+            InputA.WireUpdateEvent += CheckInputs;
+            InputB.WireUpdateEvent += CheckInputs;
+        }
 
-            InputB.WireUpdateEvent += (n) =>
-            {
-                if (InputA.value && n)
-                    Output.value = true;
-                else Output.value = false;
-            };
+        /// <summary>
+        /// Update output according to inputs
+        /// </summary>
+        /// <param name="n"></param>
+        private void CheckInputs(bool n)
+        {
+            if (InputB.value && InputA.value)
+                Output.value = true;
+            else Output.value = false;
         }
     }
 }

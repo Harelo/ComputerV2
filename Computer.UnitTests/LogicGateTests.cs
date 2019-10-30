@@ -91,5 +91,30 @@ namespace Computer.UnitTests
             xorGate.InputB.value = false;
             Assert.IsFalse(xorGate.Output.value);
         }
+
+
+        [TestMethod]
+        public void NAND_InputsChanged_OutputUpdateCorrectly()
+        {
+            //When both inputs are off output should be on
+            NAND nandGate = new NAND();
+            Assert.IsTrue(nandGate.Output.value);
+
+            //When InputA only is on output should be off
+            nandGate.InputA.value = true;
+            Assert.IsFalse(nandGate.Output.value);
+
+            //When both inputs are on output should be off
+            nandGate.InputB.value = true;
+            Assert.IsFalse(nandGate.Output.value);
+
+            //When InputB only is on output should be off
+            nandGate.InputA.value = false;
+            Assert.IsFalse(nandGate.Output.value);
+
+            //When both inputs are off again output should be back on
+            nandGate.InputB.value = false;
+            Assert.IsTrue(nandGate.Output.value);
+        }
     }
 }

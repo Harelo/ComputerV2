@@ -48,8 +48,6 @@ namespace Computer.LogicGates
             InputA = new Wire();
             InputB = new Wire();
 
-            Output.value = true;
-
             //Events for updating the output depending on the inputs
 
             InputA.WireUpdateEvent += CheckInputs;

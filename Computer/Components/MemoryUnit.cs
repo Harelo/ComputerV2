@@ -28,11 +28,10 @@ namespace Computer.Components
             nand2.InputA = SetWire;
 
             nand3.InputA = nand1.Output;
+            nand3.InputB = nand4.Output;
 
             nand4.InputB = nand2.Output;
             nand4.InputA = nand3.Output;
-
-            //nand3.InputB = nand4.Output;
 
             Output = nand3.Output;
         }

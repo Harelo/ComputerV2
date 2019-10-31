@@ -11,7 +11,7 @@ namespace Computer.UnitTests
         public void NOTClass_InputChange_OutputInverted()
         {
             // Arrange
-            NOT notGate = new NOT();
+            NOT notGate = new NOT(new Wire());
 
             // Act
             notGate.InputA.value = true;
@@ -24,7 +24,7 @@ namespace Computer.UnitTests
         public void AND_InputsChanged_OutputUpdateCorrectly()
         {
             //When both inputs are off output should be off
-            AND andGate = new AND();
+            AND andGate = new AND(new Wire(), new Wire());
             Assert.IsFalse(andGate.Output.value);
 
             //When InputA only is on output should be off
@@ -48,7 +48,7 @@ namespace Computer.UnitTests
         public void OR_InputChanged_OutputUpdatesCorrectly()
         {
             //When both inputs are off output should be off
-            OR orGate = new OR();
+            OR orGate = new OR(new Wire(), new Wire());
             Assert.IsFalse(orGate.Output.value);
 
             //When InputA only is on output should be on
@@ -72,7 +72,7 @@ namespace Computer.UnitTests
         public void XOR_InputChanged_OutputUpdatesCorrectly()
         {
             //When both inputs are off output should be off
-            XOR xorGate = new XOR();
+            XOR xorGate = new XOR(new Wire(), new Wire());
             Assert.IsFalse(xorGate.Output.value);
 
             //When InputA only is on output should be on
@@ -97,7 +97,7 @@ namespace Computer.UnitTests
         public void NAND_InputsChanged_OutputUpdateCorrectly()
         {
             //When both inputs are off output should be on
-            NAND nandGate = new NAND();
+            NAND nandGate = new NAND(new Wire(), new Wire());
             Assert.IsTrue(nandGate.Output.value);
 
             //When InputA only is on output should be on
@@ -121,7 +121,7 @@ namespace Computer.UnitTests
         public void NOR_InputChanged_OutputUpdatesCorrectly()
         {
             //When both inputs are off output should be on
-            NOR norGate = new NOR();
+            NOR norGate = new NOR(new Wire(), new Wire());
             Assert.IsTrue(norGate.Output.value);
 
             //Any other option - output is off
@@ -144,7 +144,7 @@ namespace Computer.UnitTests
         public void XNOR_InputChanged_OutputUpdatesCorrectly()
         {
             //When both inputs are off output should be on
-            XNOR xnorGate = new XNOR();
+            XNOR xnorGate = new XNOR(new Wire(), new Wire());
             Assert.IsTrue(xnorGate.Output.value);
 
             //When InputA only is on output should be off

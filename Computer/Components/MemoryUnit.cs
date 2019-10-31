@@ -24,27 +24,29 @@ namespace Computer.Components
             Output = new Wire();
             SetWire = new Wire();
             EnableWire = new Wire();
-            nand1 = new NAND();
-            nand2 = new NAND();
-            nand3 = new NAND();
-            nand4 = new NAND();
-            enabler = new AND();
 
-            nand1.InputA = InputA;
-            nand1.InputB = SetWire;
-
-            nand2.InputB = nand1.Output;
-            nand2.InputA = SetWire;
-
-            nand3.InputA = nand1.Output;
-            nand3.InputB = nand4.Output;
-
-            nand4.InputB = nand2.Output;
-            nand4.InputA = nand3.Output;
+            nand1 = new NAND(InputA, SetWire);
+            nand2 = new NAND(nand1.Output, SetWire);
+            //Wire tempWire = new Wire();
+            //tempWire.value = true;
+            nand3 = new NAND(nand1.Output, nand4.Output);
+            nand4 = new NAND(nand2.Output, nand3.Output);
+            //tempWire = nand4.Output;
 
             //The enabler section for enabling outputing the value stored in the memory unit
-            enabler.InputA = nand3.Output;
-            enabler.InputB = EnableWire;
+            enabler = new AND(nand3.Output, EnableWire);
+
+            //nand1.InputA = InputA;
+            //nand1.InputB = SetWire;
+
+            //nand2.InputB = nand1.Output;
+            //nand2.InputA = SetWire;
+
+            //nand3.InputA = nand1.Output;
+            //nand3.InputB = nand4.Output;
+
+            //nand4.InputB = nand2.Output;
+            //nand4.InputA = nand3.Output;
 
             Output = enabler.Output;
         }

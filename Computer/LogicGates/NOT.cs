@@ -8,7 +8,21 @@ namespace Computer.LogicGates
     /// </summary>
     public class NOT : IWired
     {
-        public Wire InputA { get; set; }
+        //Private field for the input
+        private Wire inputA;
+        public Wire InputA
+        {
+            get => inputA;
+            set
+            {
+                if (value != inputA)
+                {
+                    inputA = value;
+                    inputA.WireUpdateEvent += CheckInput;
+                    CheckInput(inputA.value);
+                }
+            }
+        }
         public Wire Output { get; set; }
 
         public NOT()
@@ -20,7 +34,13 @@ namespace Computer.LogicGates
             Output.value = true;
 
             //Event for changing the output when the input changes
-            InputA.WireUpdateEvent += (n) => Output.value = !n;
+            InputA.WireUpdateEvent += CheckInput;
         }
+
+        /// <summary>
+        /// Check input when it changes and update output accordingly
+        /// </summary>
+        /// <param name="n"></param>
+        private void CheckInput(bool n) => Output.value = !n;
     }
 }

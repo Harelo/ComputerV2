@@ -18,8 +18,11 @@ namespace Computer.LogicGates
                 if (value != inputA)
                 {
                     inputA = value;
-                    inputA.WireUpdateEvent += CheckInput;
-                    CheckInput(inputA.value);
+                    if (value != null)
+                    {
+                        inputA.WireUpdateEvent += CheckInput;
+                        CheckInput(inputA.value);
+                    }
                 }
             }
         }

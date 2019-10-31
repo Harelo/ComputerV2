@@ -19,12 +19,15 @@ namespace Computer.Helpers
         /// </summary>
         public bool value
         {
-            get => _value;    
+            get => _value;
             set
             {
-                _value = value;
-                //Invoke the event for listeners if it isn't empty (null)
-                WireUpdateEvent?.Invoke(value);
+                if (value != _value)
+                {
+                    _value = value;
+                    //Invoke the event for listeners if it isn't empty (null)
+                    WireUpdateEvent?.Invoke(value);
+                }
             }
         }
 

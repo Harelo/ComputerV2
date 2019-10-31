@@ -1,8 +1,5 @@
 ﻿using Computer.Helpers;
 using Computer.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Computer.LogicGates
 {
@@ -11,18 +8,50 @@ namespace Computer.LogicGates
     /// </summary>
     public class NAND : IWired
     {
-        public Wire InputA { get; set; }
-        public Wire InputB { get; set; }
+        //Private fields for the two inputs
+        private Wire inputA, inputB;
 
+        //Logic for handling input wire-changes (not value changes)
+        public Wire InputA
+        {
+            get => inputA;
+            set
+            {
+                if (value != inputA)
+                {
+                    inputA = value;
+                    inputA.WireUpdateEvent += CheckInputs;
+                    if (inputB != null)
+                        CheckInputs(false);
+                }
+            }
+        }
+        public Wire InputB
+        {
+            get => inputB;
+            set
+            {
+                if (value != inputB)
+                {
+                    inputB = value;
+                    inputB.WireUpdateEvent += CheckInputs;
+                    if (inputA != null)
+                        CheckInputs(false);
+                }
+            }
+        }
         public Wire Output { get; set; }
 
         public NAND()
         {
+            Output = new Wire();
             InputA = new Wire();
             InputB = new Wire();
-            Output = new Wire();
 
             Output.value = true;
+
+            //Events for updating the output depending on the inputs
+
             InputA.WireUpdateEvent += CheckInputs;
             InputB.WireUpdateEvent += CheckInputs;
         }

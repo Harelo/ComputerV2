@@ -8,17 +8,48 @@ namespace Computer.LogicGates
     /// </summary>
     public class NOR : IWired
     {
-        public Wire InputA { get; set; }
-        public Wire InputB { get; set; }
+        //Private fields for the two inputs
+        private Wire inputA, inputB;
+
+        //Logic for handling input wire-changes (not value changes)
+        public Wire InputA
+        {
+            get => inputA;
+            set
+            {
+                if (value != inputA)
+                {
+                    inputA = value;
+                    inputA.WireUpdateEvent += CheckInputs;
+                    if (inputB != null)
+                        CheckInputs(false);
+                }
+            }
+        }
+
+        public Wire InputB
+        {
+            get => inputB;
+            set
+            {
+                if (value != inputB)
+                {
+                    inputB = value;
+                    inputB.WireUpdateEvent += CheckInputs;
+                    if (inputA != null)
+                        CheckInputs(false);
+                }
+            }
+        }
+
         public Wire Output { get; set; }
 
         public NOR()
         {
+            Output = new Wire();
             InputA = new Wire();
             InputB = new Wire();
-            Output = new Wire();
 
-            Output.value = true;
             InputA.WireUpdateEvent += CheckInputs;
             InputB.WireUpdateEvent += CheckInputs;
         }

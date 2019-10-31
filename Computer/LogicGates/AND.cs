@@ -20,9 +20,12 @@ namespace Computer.LogicGates
                 if (value != inputA)
                 {
                     inputA = value;
-                    inputA.WireUpdateEvent += CheckInputs;
-                    if (inputB != null)
-                        CheckInputs(false);
+                    if (value != null)
+                    {
+                        inputA.WireUpdateEvent += CheckInputs;
+                        if (inputB != null)
+                            CheckInputs(false);
+                    }
                 }
             }
         }
@@ -35,9 +38,12 @@ namespace Computer.LogicGates
                 if (value != inputB)
                 {
                     inputB = value;
-                    inputB.WireUpdateEvent += CheckInputs;
-                    if (inputA != null)
-                        CheckInputs(false);
+                    if (value != null)
+                    {
+                        inputB.WireUpdateEvent += CheckInputs;
+                        if (inputA != null)
+                            CheckInputs(false);
+                    }
                 }
             }
         }

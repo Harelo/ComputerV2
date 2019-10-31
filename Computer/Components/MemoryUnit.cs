@@ -23,6 +23,7 @@ namespace Computer.Components
             InputA = new Wire();
             Output = new Wire();
             SetWire = new Wire();
+            EnableWire = new Wire();
             nand1 = new NAND();
             nand2 = new NAND();
             nand3 = new NAND();

@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Computer.LogicGates;
+using Computer.Helpers;
 
 namespace Computer.UnitTests
 {

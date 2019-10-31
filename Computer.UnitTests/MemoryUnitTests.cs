@@ -17,6 +17,13 @@ namespace Computer.UnitTests
             m.SetWire.value = false;
             m.InputA.value = false;
             Assert.IsTrue(m.Output.value);
+            m.SetWire.value = true;
+            Assert.IsFalse(m.Output.value);
+            m.SetWire.value = false;
+            m.InputA.value = true;
+            Assert.IsFalse(m.Output.value);
+            m.SetWire.value = true;
+            Assert.IsTrue(m.Output.value);
         }
     }
 }

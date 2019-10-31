@@ -29,12 +29,6 @@ namespace Computer.LogicGates
         {
             Output = new Wire();
             InputA = new Wire();
-
-            //When input is off (by default) output should be on
-            Output.value = true;
-
-            //Event for changing the output when the input changes
-            InputA.WireUpdateEvent += CheckInput;
         }
 
         /// <summary>

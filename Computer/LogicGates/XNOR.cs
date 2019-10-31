@@ -52,9 +52,6 @@ namespace Computer.LogicGates
             Output = new Wire();
             InputA = new Wire();
             InputB = new Wire();
-
-            InputA.WireUpdateEvent += CheckInputs;
-            InputB.WireUpdateEvent += CheckInputs;
         }
 
         private void CheckInputs(bool n) => Output.value = !(InputA.value ^ InputB.value);

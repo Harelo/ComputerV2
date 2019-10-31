@@ -15,17 +15,14 @@ namespace Computer.LogicGates
         public Wire InputA
         {
             get => inputA;
-            private set
+            set
             {
                 if (value != inputA)
                 {
                     inputA = value;
-                    if (value != null)
-                    {
-                        inputA.WireUpdateEvent += CheckInputs;
-                        if (inputB != null)
-                            CheckInputs(false);
-                    }
+                    inputA.WireUpdateEvent += CheckInputs;
+                    if (inputB != null)
+                        CheckInputs(false);
                 }
             }
         }
@@ -33,7 +30,7 @@ namespace Computer.LogicGates
         public Wire InputB
         {
             get => inputB;
-            private set
+            set
             {
                 if (value != inputB)
                 {
@@ -47,11 +44,11 @@ namespace Computer.LogicGates
 
         public Wire Output { get; set; }
 
-        public NOR(Wire newInputA, Wire newInputB)
+        public NOR()
         {
             Output = new Wire();
-            InputA = newInputA;
-            InputB = newInputB;
+            InputA = new Wire();
+            InputB = new Wire();
         }
 
         /// <summary>

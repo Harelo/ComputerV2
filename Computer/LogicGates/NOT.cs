@@ -13,25 +13,22 @@ namespace Computer.LogicGates
         public Wire InputA
         {
             get => inputA;
-            private set
+            set
             {
                 if (value != inputA)
                 {
                     inputA = value;
-                    if (value != null)
-                    {
-                        inputA.WireUpdateEvent += CheckInput;
-                        CheckInput(inputA.value);
-                    }
+                    inputA.WireUpdateEvent += CheckInput;
+                    CheckInput(inputA.value);
                 }
             }
         }
         public Wire Output { get; set; }
 
-        public NOT(Wire newInputA)
+        public NOT()
         {
             Output = new Wire();
-            InputA = newInputA;
+            InputA = new Wire();
         }
 
         /// <summary>

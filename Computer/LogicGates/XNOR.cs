@@ -18,17 +18,14 @@ namespace Computer.LogicGates
         public Wire InputA
         {
             get => inputA;
-            private set
+            set
             {
                 if (value != inputA)
                 {
                     inputA = value;
-                    if (value != null)
-                    {
-                        inputA.WireUpdateEvent += CheckInputs;
-                        if (inputB != null)
-                            CheckInputs(false);
-                    }
+                    inputA.WireUpdateEvent += CheckInputs;
+                    if (inputB != null)
+                        CheckInputs(false);
                 }
             }
         }
@@ -36,28 +33,25 @@ namespace Computer.LogicGates
         public Wire InputB
         {
             get => inputB;
-            private set
+            set
             {
                 if (value != inputB)
                 {
                     inputB = value;
-                    if (value != null)
-                    {
-                        inputB.WireUpdateEvent += CheckInputs;
-                        if (inputA != null)
-                            CheckInputs(false);
-                    }
+                    inputB.WireUpdateEvent += CheckInputs;
+                    if (inputA != null)
+                        CheckInputs(false);
                 }
             }
         }
 
         public Wire Output { get; set; }
 
-        public XNOR(Wire newInputA, Wire newInputB)
+        public XNOR()
         {
             Output = new Wire();
-            InputA = newInputA;
-            InputB = newInputB;
+            InputA = new Wire();
+            InputB = new Wire();
         }
 
         private void CheckInputs(bool n) => Output.value = !(InputA.value ^ InputB.value);

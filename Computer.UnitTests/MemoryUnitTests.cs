@@ -10,8 +10,8 @@ namespace Computer.UnitTests
         public void MemoryUnitTester()
         {
             MemoryUnit m = new MemoryUnit();
-            m.EnableWire.value = true;
             m.InputA.value = true;
+            m.EnableWire.value = true;
             Assert.IsFalse(m.Output.value);
             m.SetWire.value = true;
             Assert.IsTrue(m.Output.value);

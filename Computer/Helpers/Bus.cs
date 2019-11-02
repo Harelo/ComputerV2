@@ -11,18 +11,23 @@
         private Wire[] wires;
 
         /// <summary>
-        /// An indexer for a specific bit in the bus
+        /// An indexer for a specific wire in the bus
         /// </summary>
-        /// <param name="i">The bit's index</param>
+        /// <param name="i">The wire's index</param>
         /// <returns></returns>
-        public bool this[int i]
+        public Wire this[int i]
         {
-            get => wires[i].value;
+            get => wires[i];
             set
             {
-                wires[i].value = value;
-                BusUpdateEvent?.Invoke(wires);
+                wires[i] = value;
+                BusUpdateEvent?.Invoke(wires, i);
             }
+        }
+
+        public int Count
+        {
+            get => wires.Length;
         }
 
         /// <summary>
@@ -33,11 +38,14 @@
         {
             wires = new Wire[amount];
             for (int i = 0; i < amount; i++)
+            {
+                wires[i] = new Wire();
                 wires[i].value = false;
+            }
         }
 
         //Event for updating the bus value for listeners
-        public delegate void BusUpdateHandler(Wire[] newValue);
+        public delegate void BusUpdateHandler(Wire[] newValue, int indexChanged);
         public event BusUpdateHandler BusUpdateEvent;
     }
 }

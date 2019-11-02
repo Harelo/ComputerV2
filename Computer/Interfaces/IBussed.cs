@@ -4,7 +4,7 @@ namespace Computer.Interfaces
 {
     public interface IBussed
     {
-        public Bus input { get; set; }
-        public Bus output { get; set; }
+        public Bus Input { get; set; }
+        public Bus Output { get; set; }
     }
 }

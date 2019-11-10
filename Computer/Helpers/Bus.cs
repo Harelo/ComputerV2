@@ -21,6 +21,8 @@
             set
             {
                 wires[i] = value;
+                //Adds a wire update event handler for each wire
+                wires[i].WireUpdateEvent += (n) => BusUpdateEvent?.Invoke(wires, i);
                 BusUpdateEvent?.Invoke(wires, i);
             }
         }
@@ -39,8 +41,9 @@
             wires = new Wire[amount];
             for (int i = 0; i < amount; i++)
             {
-                wires[i] = new Wire();
-                wires[i].value = false;
+                this[i] = new Wire();
+                this[i].value = false;
+
             }
         }
 

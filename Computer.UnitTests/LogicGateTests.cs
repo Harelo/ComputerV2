@@ -163,5 +163,35 @@ namespace Computer.UnitTests
             xnorGate.InputB.value = false;
             Assert.IsTrue(xnorGate.Output.value);
         }
+
+        [TestMethod]
+        public void MultiAND_InputsChanged_OutputUpdatesCorrectly()
+        {
+            //Create a new MultiAND with 8 input wires
+            MultiAND multi = new MultiAND(8);
+
+            //Create a new 8 wires' bus
+            Bus newBus = new Bus(8);
+
+            //Set the multiAND input bus to the new bus created
+            multi.Inputs = newBus;
+
+            //Set all the bus wires' values to true and assert that the multiAND input bus
+            //updates correctly
+            for (int i = 0; i < newBus.Count; i++)
+            {
+                newBus[i].value = true;
+                Assert.IsTrue(multi.Inputs[i].value);
+            }
+
+            //Assert that the multiAND output is now on
+            Assert.IsTrue(multi.Output.value);
+
+            //Set the bus' 6th wire to be off which should turn off the output of the MultiAND
+            newBus[5].value = false;
+
+            //Assert that the MultiAND's output is indeed off
+            Assert.IsFalse(multi.Output.value);
+        }
     }
 }
